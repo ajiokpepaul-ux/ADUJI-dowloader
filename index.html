@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b12">
+<meta name="description" content="Aduji TV — a cinematic, customizable home experience for Android TV and Fire TV.">
+<title>Aduji TV — Your screen. Your world.</title>
+<style>
+:root{--bg:#080a10;--panel:rgba(255,255,255,.075);--line:rgba(255,255,255,.13);--muted:#a6adbd;--white:#f7f8fc;--cyan:#7ce7ed;--violet:#9b8cff;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 12%,rgba(66,91,190,.24),transparent 38%),radial-gradient(ellipse at 88% 24%,rgba(31,190,197,.16),transparent 34%),radial-gradient(ellipse at 50% 100%,rgba(109,78,205,.15),transparent 42%),#080a10}
+body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.13;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.13em;font-size:15px}.mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),#6876ed 60%,#a38cff);display:grid;place-items:center;color:#081018;font-weight:950;box-shadow:0 0 32px #6ee6eb44}
+.navlinks{display:flex;gap:28px;color:#c1c7d4;font-size:13px}.navlinks a:hover{color:var(--cyan)}.navright{display:flex;align-items:center;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:13px;font-weight:750;font-size:13px;border:1px solid var(--line);transition:.2s;cursor:pointer}.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}.primary{color:#061116;background:linear-gradient(110deg,#9cf3ed,#9aa9ff);border:0;box-shadow:0 12px 40px #73dfe333}.secondary{background:rgba(255,255,255,.06);backdrop-filter:blur(16px)}
+.hero{padding:94px 0 82px;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;min-height:650px}
+.eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid #9ce9eb44;background:#8be6e90d;color:#b9f7f5;padding:8px 12px;border-radius:100px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800}.dot{width:7px;height:7px;border-radius:50%;background:#83eee6;box-shadow:0 0 12px #83eee6}
+h1{font-size:clamp(48px,6.6vw,82px);line-height:.99;letter-spacing:-.065em;margin:25px 0 22px;font-weight:850}h1 span{background:linear-gradient(100deg,#f9fbff 10%,#9cece8 55%,#aaa0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:540px;color:#b2bac9;font-size:17px;line-height:1.75}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 22px}.micro{color:#828b9e;font-size:11px;line-height:1.6}.micro strong{color:#c8d0df}
+.visual{position:relative;min-height:460px;display:grid;place-items:center}.orb{position:absolute;width:390px;height:390px;border-radius:50%;background:linear-gradient(135deg,#66e4e4aa,#6555c488 60%,transparent);filter:blur(70px);opacity:.45}
+.tv{position:relative;width:min(100%,530px);padding:10px;border:1px solid #ffffff36;border-radius:24px;background:linear-gradient(145deg,#ffffff25,#ffffff05);box-shadow:0 35px 100px #0009,0 0 60px #8de5e522;transform:perspective(1000px) rotateY(-8deg) rotateX(3deg)}
+.screen{aspect-ratio:16/9;border-radius:16px;overflow:hidden;position:relative;padding:22px;background:linear-gradient(125deg,#111a2b 0%,#1b2451 48%,#10131e 100%)}
+.screen:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 28%,#a4d9ff77,transparent 27%),radial-gradient(ellipse at 70% 85%,#8c65ff66,transparent 35%),linear-gradient(90deg,#07101b88,transparent)}
+.screen-top,.screen-content{position:relative;z-index:1}.screen-top{display:flex;justify-content:space-between;align-items:center;font-size:9px;color:#d8e4f4}.screen-logo{font-weight:900;letter-spacing:.18em}.screen-content{margin-top:45px}.screen-kicker{font-size:8px;letter-spacing:.2em;color:#9be8e5}.screen h2{font-size:28px;line-height:1;margin:9px 0 8px;letter-spacing:-.05em}.screen p{font-size:8px;color:#c1c9d9;margin:0}.shelf{display:flex;gap:8px;margin-top:25px}.tile{height:62px;flex:1;border:1px solid #ffffff25;border-radius:8px;background:linear-gradient(145deg,#ffffff2b,#ffffff08);display:flex;align-items:end;padding:7px;font-size:7px;color:#e8edf7}.tile:nth-child(2){background:linear-gradient(145deg,#385a83,#192c4a)}.tile:nth-child(3){background:linear-gradient(145deg,#765b92,#322648)}.tile:nth-child(4){background:linear-gradient(145deg,#a36d50,#49302c)}.tv-foot{height:7px;width:30%;margin:9px auto 0;border-radius:20px;background:#ffffff28}
+.float{position:absolute;border:1px solid #ffffff25;background:#111827bb;backdrop-filter:blur(18px);padding:13px 16px;border-radius:15px;box-shadow:0 18px 40px #0006;font-size:11px;color:#dfe7f3}.float b{display:block;font-size:13px;margin-bottom:3px}.f1{left:-8px;top:76px}.f2{right:-10px;bottom:65px}.float small{color:#9ba8bc}
+.section{padding:82px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}.section h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.05em;margin:12px 0}.section-head p{color:var(--muted);max-width:430px;line-height:1.7;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:25px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#ffffff0d,#ffffff04);min-height:190px;transition:.25s}.feature:hover{transform:translateY(-4px);border-color:#8ee8e655;background:#ffffff10}.ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,#8cece522,#9b8cff22);border:1px solid #ffffff20;font-size:19px}.feature h3{margin:20px 0 8px;font-size:16px}.feature p{margin:0;color:#9fa9bb;font-size:13px;line-height:1.7}
+.band{border:1px solid var(--line);border-radius:26px;padding:36px;background:linear-gradient(110deg,#172333cc,#17162acc);display:grid;grid-template-columns:1fr auto;align-items:center;gap:25px;overflow:hidden;position:relative}.band:after{content:"";position:absolute;width:250px;height:250px;right:15%;top:-150px;border-radius:50%;background:#79e4e455;filter:blur(60px)}.band h2{margin:0 0 10px;font-size:30px;letter-spacing:-.04em}.band p{color:#aeb8c8;margin:0;line-height:1.6;font-size:13px;max-width:600px}.band .btn{position:relative;z-index:1}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{padding:24px;border-radius:18px;background:#ffffff08;border:1px solid var(--line)}.num{font-size:11px;color:var(--cyan);letter-spacing:.15em;font-weight:850}.step h3{font-size:16px;margin:16px 0 8px}.step p{color:#9fa9bb;font-size:13px;line-height:1.7;margin:0}
+footer{border-top:1px solid #ffffff12;padding:35px 0 45px;color:#8791a4;font-size:12px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot strong{color:#dce3ef}
+.note{margin-top:20px;padding:15px 17px;border-radius:13px;border:1px solid #f1c97844;background:#eab84a0c;color:#c9bd9f;font-size:11px;line-height:1.6}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:65px;gap:10px}.visual{min-height:390px}.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.f1{left:0}.f2{right:0}}
+@media(max-width:560px){.wrap{width:min(100% - 30px,var(--max))}nav{height:70px}.navright .secondary{display:none}.hero{padding:55px 0 35px;min-height:auto}.lead{font-size:15px}.visual{min-height:300px}.tv{transform:none}.screen{padding:14px}.screen-content{margin-top:28px}.screen h2{font-size:20px}.tile{height:45px}.float{padding:9px 11px;font-size:9px}.f1{top:15px}.f2{bottom:15px}.section{padding:58px 0}.section-head{display:block}.grid,.steps{grid-template-columns:1fr}.band{grid-template-columns:1fr;padding:25px}.band .btn{width:100%}.foot{display:block}.foot div+div{margin-top:12px}h1{font-size:53px}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <nav>
+    <a class="brand" href="#"><span class="mark">A</span><span>ADUJI <span style="color:#8fe8e6">TV</span></span></a>
+    <div class="navlinks"><a href="#features">Features</a><a href="#experience">Experience</a><a href="#install">Install</a></div>
+    <div class="navright"><a class="btn secondary" href="#features">Explore Aduji</a><a class="btn primary" href="https://github.com/ajiokpepaul-ux/ADUJI-launcher/actions/runs/45692769588/artifacts/15059273117" target="_blank" rel="noopener">Get Aduji ↗</a></div>
+  </nav>
+</header>
+<main>
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> BUILT FOR THE BIG SCREEN</div>
+    <h1>Your screen.<br><span>Your world.</span></h1>
+    <p class="lead">Meet Aduji TV — a cinematic home experience that puts your apps, atmosphere and personal style in one beautifully customisable place.</p>
+    <div class="hero-actions"><a class="btn primary" href="https://github.com/ajiokpepaul-ux/ADUJI-launcher/actions/runs/45692769588/artifacts/15059273117" target="_blank" rel="noopener">↓ Download Aduji APK</a><a class="btn secondary" href="#features">Discover the experience →</a></div>
+    <div class="micro"><strong>Android TV / Fire TV compatible devices</strong><br>Current build: Aduji 3.1.0 · Debug APK</div>
+  </div>
+  <div class="visual">
+    <div class="orb"></div>
+    <div class="float f1"><b>Made yours</b><small>Themes · Profiles · Icons</small></div>
+    <div class="tv"><div class="screen">
+      <div class="screen-top"><span class="screen-logo">ADUJI</span><span>MONDAY · 8:42 PM　 ◉ Wi-Fi</span></div>
+      <div class="screen-content"><div class="screen-kicker">YOUR SPACE · YOUR ENTERTAINMENT</div><h2>Make yourself<br>at home.</h2><p>Your favourite apps, ready when you are.</p>
+        <div class="shelf"><div class="tile">STREAMING</div><div class="tile">GAMES</div><div class="tile">MUSIC</div><div class="tile">APPS</div></div>
+      </div>
+    </div><div class="tv-foot"></div></div>
+    <div class="float f2"><b>One home. Many moods.</b><small>Cinema · Gaming · Minimal</small></div>
+  </div>
+</section>
+<section class="section wrap" id="features">
+  <div class="section-head"><div><div class="eyebrow">THE ADUJI EXPERIENCE</div><h2>More than a home screen.</h2></div><p>Designed around the way you use your TV: quick to navigate, easy to personalise and made to feel like yours.</p></div>
+  <div class="grid">
+    <article class="feature"><div class="ico">✦</div><h3>Advanced Theme Studio</h3><p>Choose cinematic presets or build and save your own look, from glass effects to layout and labels.</p></article>
+    <article class="feature"><div class="ico">▦</div><h3>Icon Studio</h3><p>Personalise app artwork with your own images and compatible icon pack imports.</p></article>
+    <article class="feature"><div class="ico">◈</div><h3>Wallpaper Studio</h3><p>Make the background yours with image and video wallpapers, collections and rotation.</p></article>
+    <article class="feature"><div class="ico">▤</div><h3>Independent App Folders</h3><p>Organise apps into named folders and give your home screen a structure that makes sense.</p></article>
+    <article class="feature"><div class="ico">◎</div><h3>Profiles & Experience Modes</h3><p>Switch between personal setups and Cinema, Gaming, Music, Minimal or Night experiences.</p></article>
+    <article class="feature"><div class="ico">⌁</div><h3>Smart Picks & Data Saver</h3><p>A local most-used-app shelf and an option to stop remote wallpaper streams when needed.</p></article>
+    <article class="feature"><div class="ico">☼</div><h3>Ambient Mode</h3><p>Bring up a calm in-launcher idle display while Aduji is on screen.</p></article>
+    <article class="feature"><div class="ico">▥</div><h3>Screen Studio</h3><p>Explore on-screen patterns for checking overscan, gradients, grayscale and basic display levels.</p></article>
+    <article class="feature"><div class="ico">⌘</div><h3>Backup & Restore</h3><p>Keep local snapshots and export or restore your Aduji configuration and supported custom assets.</p></article>
+  </div>
+</section>
+<section class="section wrap" id="experience">
+  <div class="band"><div><h2>A TV setup that feels like yours.</h2><p>From a clean minimal layout to a full cinematic look, Aduji gives you room to shape your big-screen experience.</p></div><a class="btn primary" href="https://github.com/ajiokpepaul-ux/ADUJI-launcher/actions/runs/45692769588/artifacts/15059273117" target="_blank" rel="noopener">Get the APK ↗</a></div>
+</section>
+<section class="section wrap" id="install">
+  <div class="section-head"><div><div class="eyebrow">GETTING STARTED</div><h2>Three steps to Aduji.</h2></div><p>Download the APK, move it to your Android TV or Fire TV device, then open it to install.</p></div>
+  <div class="steps">
+    <article class="step"><div class="num">STEP 01</div><h3>Download the APK</h3><p>Tap the Download Aduji button. Sign in to GitHub if it asks, then download the workflow artifact ZIP.</p></article>
+    <article class="step"><div class="num">STEP 02</div><h3>Get it onto your TV</h3><p>Extract the ZIP to find the APK, then transfer it to your TV using a method supported by your device.</p></article>
+    <article class="step"><div class="num">STEP 03</div><h3>Install and open</h3><p>Open the APK on your TV and follow the Android installation prompts. You can then launch Aduji.</p></article>
+  </div>
+  <div class="note"><strong>Download note:</strong> This button currently points to a GitHub Actions artifact. GitHub may require you to sign in, and workflow artifacts are temporary. For a permanent public download, publish the APK as an asset in the repository's GitHub Releases. Aduji is a launcher app; Fire TV may keep control of the HOME button and default launcher selection.</div>
+</section>
+</main>
+<footer><div class="wrap foot"><div><strong>ADUJI TV</strong>　Your screen. Your world.</div><div>Independent launcher project · Version 3.1.0</div><div>© Aduji TV · Built for the big screen</div></div></footer>
+</body>
+</html>
